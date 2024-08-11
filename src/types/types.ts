@@ -7,3 +7,14 @@ export type TProducts = {
   currency: string,
   imageUrl: string,
 }[];
+
+export type TTagOption = {
+  optionLabel: string;
+  optionId: string;
+  tags?: TTag[]
+};
+
+export type TTag = {
+  tagId: string;
+  tagLabel: string;
+}

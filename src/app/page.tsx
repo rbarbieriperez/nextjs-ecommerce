@@ -27,16 +27,16 @@ export default function Home() {
   };
 
   return (
-    <main className="">
+    <main className="h-full w-full fixed">
       <Menu/>
-      {
+      {/* {
         products.length ?
           <HighlightedProduct>
             <Image src={`/${products[0].imageUrl}`} alt="Highlighted product image" width={256} height={256}/>
             <p>{products[0].description}</p>
           </HighlightedProduct>
          : <></>
-      }
+      } */}
       
     </main>
   );
