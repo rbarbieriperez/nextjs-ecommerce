@@ -58,22 +58,22 @@ const ExpandableButton = ({ id = '', imgSrc = '', label = '', onClick = () => {}
             return null;
         }
 
-        return <div className={`flex flex-col gap-y-1 items-start ml-7 ${expanded ? 'block' : 'hidden '}`}>
+        return <div className={`flex flex-col gap-y-2 lg:gap-y-1 items-start ml-7 ${expanded ? 'block' : 'hidden '}`}>
             {options.map((option) => {
-                return <div>
-                    <OptionTags optionId={option.optionId} optionLabel={option.optionLabel} tags={option.tags} onOptionClick={() => {}} onTagClick={() => {}}/>
+                return <div className="w-full">
+                    <OptionTags key={option.optionId} optionId={option.optionId} optionLabel={option.optionLabel} tags={option.tags} onOptionClick={() => {}} onTagClick={() => {}}/>
                 </div>
             })}
         </div>
     }
     
-    return <>
+    return <div>
         <button onClick={() => setExpanded(!expanded)} className={`flex gap-x-1 ${className}`}>
             {renderImg()}
             {renderLabel()}
         </button>
         {renderOptions()}
-    </> 
+    </div> 
     
 };
 

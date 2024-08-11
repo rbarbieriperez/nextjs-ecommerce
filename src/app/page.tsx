@@ -28,7 +28,7 @@ export default function Home() {
 
   return (
     <main className="h-full w-full fixed">
-      <Menu/>
+      <Menu className="hidden lg:flex"/>
       {/* {
         products.length ?
           <HighlightedProduct>

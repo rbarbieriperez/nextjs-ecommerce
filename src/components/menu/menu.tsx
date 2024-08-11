@@ -4,9 +4,6 @@ import React from "react";
 import ExpandableButton from "../expandable-button/expandable-button";
 import { TTagOption } from "@/types/types";
 
-interface IMenu {
-}
-
 
 const componentsOptions: TTagOption[] = [
     {
@@ -59,7 +56,17 @@ const componentsOptions: TTagOption[] = [
     },
     {
         optionId: 'gpus',
-        optionLabel: 'Graphic Cards'
+        optionLabel: 'Graphic Cards',
+        tags: [
+            {
+                tagId: 'nvidia',
+                tagLabel: 'Nvidia'
+            },
+            {
+                tagId: 'amd',
+                tagLabel: 'AMD'
+            }
+        ]
     },
     {
         optionId: 'rams',
@@ -133,15 +140,18 @@ const notebooksOptions: TTagOption[] = [
     }
 ];
 
+interface IMenu {
+    className?: string;
+}
 
-const Menu = ({  }: IMenu) => {
+const Menu = ({ className }: IMenu) => {
 
 
     const handleOptionClick = (optionId: string) => {
 
     }
 
-    return <aside className="w-[80%] h-full absolute top-0 left-0 p-4 bg-white lg:w-[30rem] lg:static shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px]">
+    return <aside className={"w-[80%] md:w-[60%] pb-8 overflow-scroll flex flex-col gap-y-4 h-full absolute top-0 left-0 p-4 bg-white lg:w-[40%] xl:w-[25%] lg:static shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px]" + ` ${className}`}>
         <ExpandableButton
             id="components"
             imgSrc="images/menu-options/cpu.svg"
