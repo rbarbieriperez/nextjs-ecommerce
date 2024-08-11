@@ -4,6 +4,7 @@ import Image from "next/image";
 
 import HighlightedProduct from "@/components/highlighted-product/highlighted-product";
 import { TProducts } from "@/types/types";
+import Menu from "@/components/menu/menu";
 
 
 
@@ -27,6 +28,7 @@ export default function Home() {
 
   return (
     <main className="">
+      <Menu/>
       {
         products.length ?
           <HighlightedProduct>
