@@ -6,12 +6,14 @@ interface IHeader {
   title?: string;
   openMenu?: () => void;
   openCart?: () => void;
+  openUser?: () => void;
 }
 
 const MENU_SIZE = 32;
 const CART_SIZE = 32;
+const USER_SIZE = 32;
 
-const Header = ({ title, openCart, openMenu }: IHeader) => {
+const Header = ({ title, openCart = () => {}, openMenu = () => {}, openUser = () => {} }: IHeader) => {
 
 
 
@@ -23,18 +25,30 @@ const Header = ({ title, openCart, openMenu }: IHeader) => {
           alt="Menu"
           width={MENU_SIZE}
           height={MENU_SIZE}
-          className="justify-self-start lg:hidden"
-          onClick={openMenu ? openMenu : () => {}}
+          className="justify-self-start lg:hidden cursor-pointer"
+          onClick={openMenu}
         />
         <span className="justify-self-center self-center lg:justify-self-start">{title}</span>
-        <ImageButton
-          src="images/cart.svg"
-          alt="Cart"
-          width={CART_SIZE}
-          height={CART_SIZE}
-          className="justify-self-end"
-          onClick={openCart ? openCart : () => {}}
-        />
+        <div className="flex gap-x-2 justify-self-end">
+          <ImageButton
+            src="images/user.svg"
+            alt="Cart"
+            width={CART_SIZE}
+            height={CART_SIZE}
+            className="justify-self-end cursor-pointer"
+            onClick={openCart}
+          />
+
+          <ImageButton
+            src="images/cart.svg"
+            alt="Cart"
+            width={USER_SIZE}
+            height={USER_SIZE}
+            className="justify-self-end cursor-pointer"
+            onClick={openUser}
+          />
+        </div>
+        
       </div>
     </header>
   );

@@ -14,10 +14,15 @@ interface IExpandableButton {
     className?: string;
     options?: TTagOption[];
     optionClick?: (optionId: string) => void;
+    expanded?: boolean;
 }
 
-const ExpandableButton = ({ id = '', imgSrc = '', label = '', onClick = () => {} , className = '', options = [], optionClick = () => {} }: IExpandableButton) => {
-    const [expanded, setExpanded] = React.useState(false);
+const ExpandableButton = ({ id = '', imgSrc = '', label = '', onClick = () => {} , className = '', options = [], optionClick = () => {}, expanded = false }: IExpandableButton) => {
+    const [_expanded, setExpanded] = React.useState(false);
+
+    React.useEffect(() => {
+        setExpanded(expanded)
+    }, [expanded]);
     
     /**
      * Render image
@@ -58,17 +63,20 @@ const ExpandableButton = ({ id = '', imgSrc = '', label = '', onClick = () => {}
             return null;
         }
 
-        return <div className={`flex flex-col gap-y-2 lg:gap-y-1 items-start ml-7 ${expanded ? 'block' : 'hidden '}`}>
+        return <div className={`flex flex-col gap-y-2 lg:gap-y-1 items-start ml-7 ${_expanded ? 'block' : 'hidden '}`}>
             {options.map((option) => {
-                return <div className="w-full">
-                    <OptionTags key={option.optionId} optionId={option.optionId} optionLabel={option.optionLabel} tags={option.tags} onOptionClick={() => {}} onTagClick={() => {}}/>
+                return <div key={option.optionId} className="w-full">
+                    <OptionTags key={option.optionId} optionId={option.optionId} optionLabel={option.optionLabel} tags={option.tags} onOptionClick={() => {}} onTagClick={(id) => console.log(id)}/>
                 </div>
             })}
         </div>
     }
     
     return <div>
-        <button onClick={() => setExpanded(!expanded)} className={`flex gap-x-1 ${className}`}>
+        <button onClick={() => {
+            setExpanded(!_expanded);
+            onClick(id);
+        }} className={`flex gap-x-1 ${className}`}>
             {renderImg()}
             {renderLabel()}
         </button>
