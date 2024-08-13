@@ -1,6 +1,7 @@
 'use client';
 import React from "react";
 import ImageButton from "../image-button/image-button";
+import CartIndicator from "../cart-indicator/cart-indicator";
 
 interface IHeader {
   title?: string;
@@ -10,7 +11,6 @@ interface IHeader {
 }
 
 const MENU_SIZE = 32;
-const CART_SIZE = 32;
 const USER_SIZE = 32;
 
 const Header = ({ title, openCart = () => {}, openMenu = () => {}, openUser = () => {} }: IHeader) => {
@@ -33,19 +33,15 @@ const Header = ({ title, openCart = () => {}, openMenu = () => {}, openUser = ()
           <ImageButton
             src="images/user.svg"
             alt="Cart"
-            width={CART_SIZE}
-            height={CART_SIZE}
-            className="justify-self-end cursor-pointer"
-            onClick={openCart}
-          />
-
-          <ImageButton
-            src="images/cart.svg"
-            alt="Cart"
             width={USER_SIZE}
             height={USER_SIZE}
             className="justify-self-end cursor-pointer"
             onClick={openUser}
+          />
+
+          <CartIndicator
+            className="justify-self-end cursor-pointer"
+            onClick={openCart}
           />
         </div>
         

@@ -184,7 +184,7 @@ const Menu = ({ className, openSettings = () => {} }: IMenu) => {
          />
       ) : (
         <motion.aside
-          className={`w-[80%] md:w-[60%] pb-8 flex flex-col h-full absolute top-0 left-0 p-4 bg-white lg:w-[40%] xl:w-[25%] lg:static shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px] ${className}`}
+          className={`w-[80%] md:w-[60%] pb-8 flex flex-col h-full absolute top-0 left-0 p-4 bg-white lg:w-[40%] xl:w-[20%] lg:static shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px] ${className}`}
           initial={{ transform: 'translateX(-100%)' }}
           animate={{ transform: 'translateX(0)' }}
           transition={{ ease: 'easeIn', duration: .1 }}
